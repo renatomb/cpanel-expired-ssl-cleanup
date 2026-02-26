@@ -403,7 +403,7 @@ def main():
     
     logger = logging.getLogger(__name__)
     logger.info("=" * 80)
-    logger.info("CPANEL SSL CERTIFICATE CLEANUP SCRIPT v2.0")
+    logger.info("CPANEL SSL CERTIFICATE CLEANUP SCRIPT v1.0")
     logger.info("=" * 80)
     logger.info(f"Username: {args.username}")
     logger.info(f"Hostname: {args.hostname}")

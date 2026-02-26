@@ -117,7 +117,7 @@ python3 cpanel_ssl_cleanup.py \
 ### Exemplo de Output:
 ```
 ================================================================================
-CPANEL SSL CERTIFICATE CLEANUP SCRIPT v2.0
+CPANEL SSL CERTIFICATE CLEANUP SCRIPT v1.0
 ================================================================================
 Username: meuusuario
 Hostname: server.example.com
@@ -225,7 +225,7 @@ pip install requests
 - Versão antiga do script
 
 **Solução:** 
-- Use a versão 2.0 do script (este arquivo)
+- Use a versão 1.0 do script (este arquivo)
 - O parâmetro 'id' agora é passado corretamente na requisição UAPI
 
 ### Erro: "Connection timeout"
@@ -241,7 +241,7 @@ pip install requests
 
 ### Certificados válidos aparecem como expirados
 **Solução:**
-- Use a versão 2.0 do script
+- Use a versão 1.0 do script
 - A lógica de comparação de datas foi corrigida
 - O script agora interpreta corretamente timestamps Unix
 
@@ -284,4 +284,4 @@ Este script é fornecido "como está", sem garantias de qualquer tipo.
 
 ---
 
-**Nota**: Este script utiliza UAPI (Universal API) do cPanel, que é a API moderna e recomendada. API2 foi removida completamente na versão 2.0.
+**Nota**: Este script utiliza UAPI (Universal API) do cPanel, que é a API moderna e recomendada. API2 foi removida completamente na versão 1.0.
