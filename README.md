@@ -256,7 +256,7 @@ Isso é normal! Significa que todos os certificados estão válidos.
 
 ## 🔄 Changelog
 
-**Versão 2.0** (2025-12-16)
+**Versão 1.0** (2026-02-25)
 - ✨ **BREAKING CHANGE**: Parâmetros separados `--username` e `--api-key` (ambos obrigatórios)
 - 🗑️ Removido completamente suporte à API2 (apenas UAPI)
 - 🐛 Corrigido parâmetro 'id' na exclusão de certificados
@@ -265,7 +265,7 @@ Isso é normal! Significa que todos os certificados estão válidos.
 - ✨ Critério correto: exclui APENAS certificados com data < data_atual
 - 📝 Melhorias no logging verboso
 
-**Versão 1.0** (2025-12-15)
+**Versão 0.1** (2025-12-15)
 - Versão inicial
 - Suporte a UAPI e API2
 - Logging dual (stdout + arquivo)
