@@ -62,8 +62,7 @@ class CPanelSSLManager:
         # Concatenar username:api_key para autenticação
         auth_token = f"{username}:{api_key}"
         self.session.headers.update({
-            'Authorization': f'cpanel {auth_token}',
-            'Content-Type': 'application/json'
+            'Authorization': f'cpanel {auth_token}'
         })
         
         # URL base para a UAPI
@@ -71,7 +70,7 @@ class CPanelSSLManager:
         
         self.logger = logging.getLogger(__name__)
 
-    def _make_uapi_request(self, module: str, function: str, params: Optional[Dict] = None) -> Dict[str, Any]:
+    def _make_uapi_request(self, module: str, function: str, params: Optional[Dict] = None, method: str = 'GET') -> Dict[str, Any]:
         """
         Faz uma requisição à UAPI do cPanel
         
@@ -79,6 +78,7 @@ class CPanelSSLManager:
             module: Módulo da API (ex: SSL)
             function: Função a ser chamada
             params: Parâmetros da função
+            method: Método HTTP (GET ou POST)
             
         Returns:
             Resposta da API em formato dict
@@ -86,10 +86,13 @@ class CPanelSSLManager:
         url = f"{self.uapi_base}/{module}/{function}"
         
         try:
-            if params:
-                response = self.session.get(url, params=params, verify=False, timeout=30)
+            if method.upper() == 'POST':
+                response = self.session.post(url, params=params, verify=False, timeout=30)
             else:
-                response = self.session.get(url, verify=False, timeout=30)
+                if params:
+                    response = self.session.get(url, params=params, verify=False, timeout=30)
+                else:
+                    response = self.session.get(url, verify=False, timeout=30)
             
             response.raise_for_status()
             return response.json()
@@ -204,8 +207,8 @@ class CPanelSSLManager:
         self.logger.info(f"Excluindo certificado ID: {cert_id}")
         
         try:
-            # Fazer requisição UAPI com o parâmetro 'id'
-            response = self._make_uapi_request('SSL', 'delete_cert', {'id': cert_id})
+            # Fazer requisição UAPI com o parâmetro 'id' usando POST
+            response = self._make_uapi_request('SSL', 'delete_cert', {'id': cert_id}, method='POST')
             
             if response.get('status') == 1:
                 self.logger.info(f"✓ Certificado {cert_id} excluído com sucesso via UAPI")
